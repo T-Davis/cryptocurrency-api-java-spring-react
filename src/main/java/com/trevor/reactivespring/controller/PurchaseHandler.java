@@ -11,8 +11,11 @@ import java.time.LocalDateTime;
 public class PurchaseHandler {
 
     public Mono<ServerResponse> listPurchases(ServerRequest serverRequest) {
-        final Mono<Purchase> purchase = Mono.fromSupplier(
-                () -> new Purchase("ffe", "123", LocalDateTime.now()));
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(purchase, Purchase.class);
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.fromSupplier(
+                        () -> new Purchase("ffe", "123", LocalDateTime.now())
+                ), Purchase.class);
     }
 }
