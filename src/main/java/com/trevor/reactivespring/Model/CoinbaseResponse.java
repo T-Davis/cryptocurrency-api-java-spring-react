@@ -12,7 +12,7 @@ public class CoinbaseResponse {
         this.data = data;
     }
 
-    static class Data {
+    public static class Data {
         private String base;
         private String currency;
         private String amount;
