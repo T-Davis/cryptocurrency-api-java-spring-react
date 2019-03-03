@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 @RequestMapping("/coin/purchase/v1")
 public class PurchaseController {
 
-    @PostMapping(value = "/{name}")
-    public Mono<Purchase> createPurchase(@PathVariable("name") String name) {
-        return Mono.fromSupplier(() -> new Purchase("name", "price", LocalDateTime.now()));
+    @PostMapping(value = "/{cryptoName}")
+    public Mono<Purchase> createPurchase(@PathVariable String cryptoName) {
+        return Mono.fromSupplier(
+                () -> new Purchase("cryptoName", "price", LocalDateTime.now())
+        );
     }
 }

@@ -7,11 +7,11 @@ import reactor.core.publisher.Mono;
 
 public interface CoinbaseService {
 
-    Mono<CoinbaseResponse> getCryptoPrice(String priceName);
+    Mono<CoinbaseResponse> getCryptoPrice(String cryptoName);
 
-    Mono<Purchase> createPurchase(String priceName);
+    Mono<Purchase> createPurchase(String cryptoName);
 
-    Mono<Purchase> getPurchaseId(String id);
+    Mono<Purchase> getPurchaseById(String id);
 
     Flux<Purchase> listAllPurchases();
 }

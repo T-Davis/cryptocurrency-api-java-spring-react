@@ -8,20 +8,20 @@ import java.time.LocalDateTime;
 @Document
 public class Purchase {
 
-    private final String name;
+    private final String cryptoName;
     private final String price;
     private final LocalDateTime createdAt;
     @Id
     private String id;
 
-    public Purchase(String name, String price, LocalDateTime createdAt) {
-        this.name = name;
+    public Purchase(String cryptoName, String price, LocalDateTime createdAt) {
+        this.cryptoName = cryptoName;
         this.price = price;
         this.createdAt = createdAt;
     }
 
-    public String getName() {
-        return name;
+    public String getCryptoName() {
+        return cryptoName;
     }
 
     public String getPrice() {
@@ -30,5 +30,9 @@ public class Purchase {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public String getId() {
+        return id;
     }
 }
