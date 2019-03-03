@@ -47,7 +47,7 @@ public class CoinbaseServiceImpl implements CoinbaseService {
     }
 
     @Override
-    public Flux<Purchase> listAllPurchases() {
+    public Flux<Purchase> getAllPurchases() {
         return reactiveMongoOperations.findAll(Purchase.class);
     }
 }

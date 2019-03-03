@@ -13,5 +13,5 @@ public interface CoinbaseService {
 
     Mono<Purchase> getPurchaseById(String id);
 
-    Flux<Purchase> listAllPurchases();
+    Flux<Purchase> getAllPurchases();
 }
