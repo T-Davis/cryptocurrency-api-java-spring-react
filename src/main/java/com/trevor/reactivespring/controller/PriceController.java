@@ -1,5 +1,8 @@
 package com.trevor.reactivespring.controller;
 
+import com.trevor.reactivespring.Model.CoinbaseResponse;
+import com.trevor.reactivespring.service.CoinbaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +13,15 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/coin/price/v1")
 public class PriceController {
 
-    // Todo: change returntype to domain model
-    @GetMapping(value = "/{name}")
-    public Mono<String> getPrice(@PathVariable String name) {
+    private CoinbaseService coinbaseService;
 
-        // Todo: use autowired service
-        return Mono.fromSupplier(() -> "price");
+    @Autowired
+    public PriceController(CoinbaseService coinbaseService) {
+        this.coinbaseService = coinbaseService;
+    }
+
+    @GetMapping(value = "/{cryptoName}") // such as btc-usd
+    public Mono<CoinbaseResponse> getCryptoPrice(@PathVariable String cryptoName) {
+        return coinbaseService.getCryptoPrice(cryptoName);
     }
 }
