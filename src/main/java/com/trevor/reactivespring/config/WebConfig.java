@@ -16,16 +16,16 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class WebConfig implements WebFluxConfigurer {
 
     @Bean
-    public PurchaseHandler purchaseHandler() {
-        return new PurchaseHandler();
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> routerFunctionPurchase(final PurchaseHandler purchaseHandler) {
-
+    public RouterFunction<ServerResponse> routerFunctionGetPurchaseById(final PurchaseHandler purchaseHandler) {
         return RouterFunctions.route(
                 RequestPredicates.GET("/coin/purchase/v1/{id}")
                         .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)
-                        ), purchaseHandler::listPurchases);
+                        ), purchaseHandler::getPurchaseById);
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> routerFunctionGetAllPurchases(final PurchaseHandler purchaseHandler) {
+        return RouterFunctions.route(
+                RequestPredicates.GET("/coin/purchase/v1/"), purchaseHandler::getAllPurchases);
     }
 }
